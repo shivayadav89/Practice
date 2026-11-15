@@ -16,16 +16,6 @@ function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
   return (
     <>
       {/* Hero Section */}
@@ -319,7 +309,14 @@ function Home() {
                   variants={fadeInUp}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <img src={trainer.img} alt={trainer.name} className="trainer-image" />
+                  <img 
+                  src={trainer.img} 
+                  alt={trainer.name} 
+                  className="trainer-image"
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/400x350/1a1a1a/D4AF37?text=Trainer';
+                  }}
+                />
                   <div className="trainer-info">
                     <h4 className="trainer-name">{trainer.name}</h4>
                     <p className="trainer-specialization">{trainer.spec}</p>

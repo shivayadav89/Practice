@@ -158,6 +158,7 @@ function Contact() {
                       onChange={handleChange}
                       placeholder="Enter your name"
                       required
+                      minLength={2}
                     />
                   </Form.Group>
 
@@ -168,8 +169,7 @@ function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="Enter your email"
-                      required
+                      placeholder="Enter your email (optional)"
                     />
                   </Form.Group>
 

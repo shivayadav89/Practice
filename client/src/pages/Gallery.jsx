@@ -65,7 +65,14 @@ function Gallery() {
                 transition={{ delay: index * 0.05 }}
                 onClick={() => setSelectedImage(image)}
               >
-                <img src={image} alt={`Gallery ${index + 1}`} loading="lazy" />
+                <img 
+                  src={image} 
+                  alt={`Gallery ${index + 1}`} 
+                  loading="lazy" 
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/600x400/1a1a1a/D4AF37?text=Image+Not+Available';
+                  }}
+                />
                 <div className="gallery-overlay">
                   <FaExpand size={24} className="text-white" />
                 </div>
@@ -82,13 +89,34 @@ function Gallery() {
         centered
         size="lg"
         className="gallery-modal"
+        backdrop="static"
+        keyboard={false}
       >
-        <Modal.Body className="p-0">
+        <Modal.Body className="p-0" style={{ position: 'relative' }}>
           <img 
             src={selectedImage} 
             alt="Selected" 
             style={{ width: '100%', height: 'auto', display: 'block' }}
           />
+          <button
+            onClick={() => setSelectedImage(null)}
+            style={{
+              position: 'absolute',
+              top: '10px',
+              right: '10px',
+              background: 'rgba(0,0,0,0.5)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              cursor: 'pointer',
+              fontSize: '20px',
+              zIndex: 1000
+            }}
+          >
+            ×
+          </button>
         </Modal.Body>
       </Modal>
     </>

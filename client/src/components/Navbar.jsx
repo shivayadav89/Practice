@@ -48,7 +48,10 @@ function Navbar() {
                 as={Link}
                 to={link.path}
                 className={location.pathname === link.path ? 'active' : ''}
-                onClick={() => setExpanded(false)}
+                onClick={() => {
+                  setExpanded(false);
+                  window.scrollTo(0, 0);
+                }}
               >
                 {link.label}
               </Nav.Link>
@@ -57,7 +60,10 @@ function Navbar() {
               as={Link}
               to="/join"
               className="btn btn-primary ms-lg-3"
-              onClick={() => setExpanded(false)}
+              onClick={() => {
+                setExpanded(false);
+                window.scrollTo(0, 0);
+              }}
             >
               Join Now
             </Nav.Link>
